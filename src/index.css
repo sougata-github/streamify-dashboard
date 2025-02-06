@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@theme {
+  --font-*: initial;
+  --font-sans: "Geist", serif;
+
+  --font-geist: "Geist", serif;
+  --font-pacifico: "Pacifico", serif;
+}
+
+:root {
+  --_mesh-gradient-blur: 0px;
+  --_mesh-gradient-blend-mode: normal;
+
+  line-height: 1.5;
+  font-weight: 400;
+
+  color: rgba(255, 255, 255, 0.8);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  position: relative;
+  color: rgba(255, 255, 255, 1);
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  background: radial-gradient(
+      circle at 50% -60%,
+      rgba(0, 170, 255, 0.8) 0%,
+      transparent 70%
+    ),
+    #030303;
+}
+
+.grain-overlay {
+  background-image: url("./assets/grain.jpg");
+  background-position: center;
+
+  @apply opacity-10 mix-blend-overlay z-10 pointer-events-none;
+}
+
+@media (min-width: 1024px) {
+  body {
+    background: radial-gradient(
+        circle at 50% -60%,
+        rgba(0, 170, 255, 0.8) 0%,
+        transparent 70%
+      ),
+      #030303;
+    mix-blend-mode: var(--_mesh-gradient-blend-mode);
+    filter: blur(var(--_mesh-gradient-blur));
+  }
+}
+
+option {
+  @apply bg-black/80 text-sm p-1 !border-none !outline-none;
+}
