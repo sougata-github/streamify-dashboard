@@ -32,7 +32,7 @@ function TableHeader<T>({ columns }: { columns: Column<T>[] }) {
         {columns.map((column) => (
           <th
             key={column.key as string}
-            className="p-3 text-left cursor-pointer hover:bg-white/20 transition-all"
+            className="p-3 text-left cursor-pointer"
           >
             {column.header}
           </th>

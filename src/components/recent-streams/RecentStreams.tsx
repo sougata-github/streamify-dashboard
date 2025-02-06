@@ -4,7 +4,10 @@ import { useMemo } from "react";
 import { recentStreamsColumns, recentStreamsData } from "../../data";
 import StreamFilter from "./StreamFilter";
 import StreamSort from "./StreamSort";
+import Pagination from "./Pagination";
 import { Table } from "./Table";
+
+const PAGE_SIZE = 5;
 
 const RecentStreams = () => {
   const [searchParams] = useSearchParams();
@@ -12,20 +15,35 @@ const RecentStreams = () => {
   // Get current search parameters
   const sort = searchParams.get("sort") || "date";
   const filter = searchParams.get("filter") || "";
+  const page = (searchParams.get("page") || "1").trim();
 
-  // Memoized filtered data
+  //pagination logic
+  const totalPages = Math.ceil(recentStreamsData.length / PAGE_SIZE);
+  const skip = (parseInt(page) - 1) * PAGE_SIZE;
+  const limit = parseInt(page) * PAGE_SIZE;
+
+  /*Computations*/
+
+  //paginated data
+  const paginatedData = useMemo(() => {
+    if (page) {
+      return recentStreamsData.slice(skip, limit);
+    }
+  }, [page, limit, skip]);
+
+  //memoised filtered data
   const filteredData = useMemo(() => {
     if (filter) {
-      return recentStreamsData.filter(
+      return paginatedData?.filter(
         (stream) => stream.artist.toLowerCase() === filter.toLowerCase()
       );
     }
-    return recentStreamsData;
-  }, [filter]);
+    return paginatedData;
+  }, [filter, paginatedData]);
 
   // Memoized sorted data
   const sortedData = useMemo(() => {
-    return [...filteredData].sort((a, b) => {
+    return [...filteredData!].sort((a, b) => {
       if (sort === "streamCount") {
         return b.streamCount - a.streamCount;
       }
@@ -49,6 +67,7 @@ const RecentStreams = () => {
         </div>
         {/* Table */}
         <Table data={sortedData} columns={recentStreamsColumns} />
+        <Pagination totalPages={totalPages} />
       </div>
     </div>
   );

@@ -22,8 +22,8 @@ const StreamFilter = () => {
   };
 
   return (
-    <div className="bg-white/10 p-2 rounded-lg sm:pl-2.5">
-      <label className="text-sm font-medium text-gray-300">
+    <div className="bg-white/10 p-2 rounded-lg sm:pl-2.5 max-sm:pb-2.5">
+      <label className="text-sm font-medium text-white/60">
         Filter by Artist
       </label>
       <select
