@@ -15,7 +15,6 @@ import { topSongsData } from "../data";
 const PopularSongs = () => {
   const matches = useMediaQuery("(min-width: 576px)");
 
-  //ideally should be an optimised db query.
   const mostStreamedSong = topSongsData.reduce((acc, item) => {
     if (acc.streams < item.streams) {
       acc = item;
@@ -44,10 +43,16 @@ const PopularSongs = () => {
       {/* Popular Songs - Bar Chart*/}
       <ResponsiveContainer
         width="100%"
-        height={matches ? 420 : 400}
-        className="mt-12 py-4 sm:pr-5"
+        height={matches ? 420 : 320}
+        className="mt-12 sm:pr-5 py-2"
       >
-        <BarChart data={topSongsData}>
+        <BarChart
+          data={topSongsData}
+          {...{
+            overflow: "visible",
+          }}
+          className="max-sm:-ml-4"
+        >
           <YAxis
             tickFormatter={(value) => `${(value / 1000).toFixed(0)}k`}
             tick={{ fontSize: 15, className: "text-white/50" }}
@@ -70,13 +75,11 @@ const PopularSongs = () => {
             cursor={false}
           />
           <Bar
-            alignmentBaseline="baseline"
             dataKey="streams"
             fill="rgba(0, 170, 255, 0.8)"
             barSize={matches ? 28 : 20}
             radius={[4, 4, 0, 0]}
             animationDuration={500}
-            minPointSize={0}
           >
             {topSongsData.map((_, index) => (
               <Cell

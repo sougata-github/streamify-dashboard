@@ -29,7 +29,7 @@ const StreamFilter = () => {
       <select
         value={selectedFilter}
         onChange={handleFilterChange}
-        className="max-sm:mt-1 bg-transparent border-none outline-white/20 outline-1 rounded-md p-1 text-white sm:ml-2 text-sm"
+        className="max-sm:mt-2.5 bg-transparent border-none outline-white/20 outline-1 rounded-md p-1 text-white sm:ml-2 text-sm"
       >
         <option value="">All Artists</option>
         {artists.map((artist) => (
