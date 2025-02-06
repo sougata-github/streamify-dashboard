@@ -28,14 +28,14 @@ I built Streamify with a focus on responsiveness, performance, and maintainabili
 
 ## Key Features
 
-✔Modern & Sleek UI
-✔ Fully Responsive
-✔ Key Metrics Display (Cards)
-✔ Interactive Charts (Bar, Line, Pie)
-✔ Data Table for Recent Streams
-✔ Sorting, Filtering & Pagination
-✔ Smooth Animations & Transitions
-✔ Organized File & Folder Structure
+- Modern & Sleek UI
+- Fully Responsive
+- Key Metrics Display (Cards)
+- Interactive Charts (Bar, Line, Pie)
+- Data Table for Recent Streams
+- Sorting, Filtering & Pagination
+- Smooth Animations & Transitions
+- Organized File & Folder Structure
 
 ## Extra Features
 
